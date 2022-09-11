@@ -1,7 +1,7 @@
 (begin
   (def fac (fn (n)
     (if (= 0 n)
-	  1
-	  (* n (fac (- n 1))))))
+    1
+    (* n (fac (- n 1))))))
   (print (fac 10))
 )
