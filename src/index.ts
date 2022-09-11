@@ -1,15 +1,24 @@
+import fs from 'fs';
 import { run } from './jisp';
 
 function main() {
-  const prog = `
-    (begin
-      (define a 10)
-      (define b 2)
-      (define sum (lambda (x y) (+ x y)))
-      (sum a b)
-    )`;
-  const result = run(prog);
-  console.log(result);
+  // Take first argument as command
+  const command = process.argv[2];
+  if (!command) {
+    console.error('Jisp: No command given');
+    return;
+  }
+
+  if (command === 'run') {
+    // Run the program
+    const filePath = process.argv[3];
+
+    // Read the whole file and pass it to run
+    const program = fs.readFileSync(filePath, 'utf8');
+    run(program);
+  } else {
+    console.error('Jisp: Unknown command ' + command);
+  }
 }
 
 main();

@@ -76,6 +76,8 @@ export function stdEnv(): Map<symbol, AstNode> {
     '>=': (a: number, b: number) => a >= b,
     '<=': (a: number, b: number) => a <= b,
     '=': (a: number, b: number) => a === b,
+    '!=': (a: number, b: number) => a !== b,
+    or: (a: boolean, b: boolean) => a || b,
     pi: Math.PI,
     abs: (a: number) => Math.abs(a),
     expt: (a: number) => Math.exp(a),
