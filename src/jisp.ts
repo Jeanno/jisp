@@ -89,7 +89,7 @@ export function stdEnv(): Map<symbol, AstNode> {
     // Types
     'null?': (a: AstNode) => a === null,
     'number?': (a: AstNode) => typeof a === 'number',
-    'boolean?': (a: AstNode) => typeof a === 'boolean',
+    'bool?': (a: AstNode) => typeof a === 'boolean',
     'symbol?': (a: AstNode) => typeof a === 'string',
     'list?': (a: AstNode) => Array.isArray(a),
 
@@ -132,11 +132,11 @@ function evaluate(ast: AstNode, env = stdEnv()): AstNode {
       const [test, conseq, alt] = ast.slice(1);
       const expr = evaluate(test, env) ? conseq : alt;
       result = evaluate(expr, env);
-    } else if (op === Symbol.for('define')) {
+    } else if (op === Symbol.for('def')) {
       const [symbol, expr] = ast.slice(1);
       env.set(symbol as symbol, evaluate(expr, env));
       result = 0;
-    } else if (op === Symbol.for('lambda')) {
+    } else if (op === Symbol.for('fn')) {
       const [params, body] = args;
       result = (...args: AstNode[]) => {
         const newEnv = new Map(env);
