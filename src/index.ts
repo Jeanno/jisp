@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { run } from './jisp';
+import { run, repl } from './jisp';
 
 function main() {
   // Take first argument as command
@@ -16,6 +16,8 @@ function main() {
     // Read the whole file and pass it to run
     const program = fs.readFileSync(filePath, 'utf8');
     run(program);
+  } else if (command === 'repl') {
+    repl();
   } else {
     console.error('Jisp: Unknown command ' + command);
   }

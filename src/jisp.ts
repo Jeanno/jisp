@@ -1,3 +1,4 @@
+import readline from 'readline';
 // Declare type ASTNode
 type AstNode = string | number | symbol | AstNode[] | Function | null;
 
@@ -166,4 +167,23 @@ function evaluate(ast: AstNode, env = stdEnv()): AstNode {
 export function run(input: string) {
   const ast = parse(input);
   return evaluate(ast);
+}
+
+let rl = null;
+export function repl(env = stdEnv()) {
+  if (!rl) {
+    rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+  }
+
+  rl.question('jisp> ', (input) => {
+    try {
+      console.log(evaluate(parse(input), env));
+    } catch (e) {
+      console.log(e);
+    }
+    repl(env);
+  });
 }
