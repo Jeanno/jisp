@@ -37,6 +37,11 @@ Or something more complicated like this in `examples/fib.jisp`.
 ```
 npm install
 npm start run ./examples/fac.jisp
+
+> jisp@0.0.1 start
+> ts-node src/index.ts
+
+3628800
 ```
 
 ## TODO
