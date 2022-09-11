@@ -22,7 +22,6 @@ function tokenize(input: string): string[] {
     if (parantheses.has(char)) {
       output.push(char);
       pos++;
-    // else if char is a whitespace including newline and tab
     } else if (whitespaces.has(char)) {
       pos++;
     } else {
