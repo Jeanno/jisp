@@ -45,6 +45,10 @@ npm start run ./examples/fac.jisp
 ```
 
 ## TODO
+Jisp is a production ready programming language except that there are still
+quite a few fundamentals to be implemented.
+
+More cutting edge features to come:
 - Support string type
 - Write a hello world program
 - Support comments
